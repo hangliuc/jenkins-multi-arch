@@ -1,0 +1,45 @@
+{
+    "id": "123",
+    "imp": [{
+        "id": "1",
+        "tagid": "2049-abd-efg",
+        "bidfloor": 0.01,
+        "bidfloorcur": "USD",
+        "native": {
+            "request": "{\"assets\":[{\"required\":1,\"id\":1,\"img\":{\"type\":1,\"wmin\":84,\"hmin\":84}}]}",
+            "ver": "1.2"
+        },
+        "instl": 0
+    }],
+  "app": {
+
+    "id": "100461",
+    "bundle": "com.midastest.ads",
+    "ver": "4050618",
+    "publisher": {
+      "id": "bd8b25d0-413e-4886-9adf-6a796ff47740"
+    }
+  },
+  "device": {
+        "ua": "Mozilla/5.0 (Linux; Android 6.0; vivo Y67 Build/MRA58K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/100.0.4896.88 Mobile Safari/537.36",
+        "ip": "114.124.182.13",
+        "geo": {
+          "country": "ID"
+        },
+    "devicetype": 4,
+    "make": "WIKO",
+    "model": "samsung-sm-g900a",
+    "os": "android",
+    "osv": "5.1.1",
+    "language": "en",
+    "carrier": "310410",
+    "connectiontype": 7,
+    "ifa": "5731b4c8-7cc1-4a09-bb77-24f237d93a66",
+    "didsha1": "ecae9042f3e549a4fd1af27a1ed38b5f682fa3ca",
+    "didmd5": "c98de3c3706ae57c89f97c0778c8121d",
+    "dpidsha1": "a07713adea29cd23fd10a2e81a4fb07e23e00fb7",
+    "dpidmd5": "af4935679d392191157f687f48907492"
+  },
+  "at": 1,
+  "tmax": 2000
+}

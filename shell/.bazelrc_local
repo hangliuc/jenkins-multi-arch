@@ -1,0 +1,15 @@
+#c++14 is specified here, because tensorflow doesn't support version >c++14,
+# globally specify c++14 but building LambdaServer and other componments with c++2a
+#本地编译使用
+build --cxxopt='-std=c++2a'
+build --cxxopt=-DHAVE_ZLIB=1 
+build --define with_glog=true
+#build --cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0 
+#build --copt=-"O2" -c dbg
+build -c dbg
+build --cxxopt=-DNOT_USE_KAFKA
+# 用于本地编译， 不编译s3
+build --define with_s3=false --cxxopt=-DNOT_USE_S3
+# 开启cpu profiler
+build --define ads_profiler_mac=true  --cxxopt=-DBRPC_ENABLE_CPU_PROFILER
+
