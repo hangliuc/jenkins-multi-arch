@@ -31,7 +31,7 @@ public:
                 ::google::protobuf::Closure* done);
 
 private:
-    bool _GetLocationWithSCK(double lat, double lon, std::string& ip, ::ecom::lbs::ResponseBody* response);
+    bool _GetLocationWithSCK(double lat, double lon, std::string ip, ::ecom::lbs::ResponseBody* response);
 
 };
 

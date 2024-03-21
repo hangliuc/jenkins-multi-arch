@@ -21,7 +21,7 @@ void LbsImpl::get_loc(::google::protobuf::RpcController* controller,
 };
 
 
-bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string& ip, ::ecom::lbs::ResponseBody* response) {
+bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string ip, ::ecom::lbs::ResponseBody* response) {
     Location* origin_loc = get_location(lat, lon, ip.c_str());
     if(!origin_loc) {
         LOG(ERROR) << "lyn_debug error get_location lat:" << lat << ", lon:" << lon << ", ip:" << ip;
