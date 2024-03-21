@@ -15,6 +15,8 @@ void LbsImpl::get_loc(::google::protobuf::RpcController* controller,
     brpc::Controller* cntl = static_cast<brpc::Controller*>(controller);
     assert(nullptr != cntl);
 
+    _GetLocationWithSCK(request->lat(), request->lng(), request->ip(), response);
+
     return;
 };
 
