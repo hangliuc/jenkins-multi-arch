@@ -1,1 +1,0 @@
-curl -X POST -H "Content-Type: application/json" "http://127.0.0.1:50051/internal/get_algo_ads"  -d @data_internal.json

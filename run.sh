@@ -31,4 +31,4 @@ echo "server_path: ${server_path}"
 
 # env_flag_file
 echo "env_flag_file: ${env_flag_file}"
-${server_path}/access_brpc --flagfile=${env_flag_file}
+${server_path}/lbs_brpc --flagfile=${env_flag_file}
