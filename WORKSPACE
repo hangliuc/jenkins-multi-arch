@@ -83,8 +83,8 @@ git_repository(
 git_repository(
     name = "shareit_ma_proto",
     remote = "git@git.ushareit.me:sprs-ads/ecom-dsp/proto.git",
-    # tag = "v1.3.28",
-    branch = "lyn_lbs_service",
+    tag = "v1.3.33",
+    # branch = "lyn_lbs_service",
 )
 
 # ads_util

@@ -4,7 +4,7 @@ namespace shareAds {
 static bvar::LatencyRecorder latency("lbs", "cost");
 
 
-void LbsImpl::get_location(::google::protobuf::RpcController* controller,
+void LbsImpl::get_loc(::google::protobuf::RpcController* controller,
         const ::ecom::lbs::RequestBody* request,
         ::ecom::lbs::ResponseBody* response,
         ::google::protobuf::Closure* done) {
@@ -20,7 +20,7 @@ void LbsImpl::get_location(::google::protobuf::RpcController* controller,
 
 
 bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string& ip, ::ecom::lbs::ResponseBody* response) {
-    Location* origin_loc = ::get_location(lat, lon, ip.c_str());
+    Location* origin_loc = get_location(lat, lon, ip.c_str());
     if(!origin_loc) {
         return false;
     }

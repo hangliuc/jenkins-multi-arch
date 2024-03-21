@@ -25,7 +25,7 @@ public:
     virtual ~LbsImpl() {
     }
 
-    virtual void get_location(::google::protobuf::RpcController* controller,
+    virtual void get_loc(::google::protobuf::RpcController* controller,
                 const ::ecom::lbs::RequestBody* request,
                 ::ecom::lbs::ResponseBody* response,
                 ::google::protobuf::Closure* done);
