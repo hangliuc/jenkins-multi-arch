@@ -22,8 +22,16 @@ void LbsImpl::get_loc(::google::protobuf::RpcController* controller,
 bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string& ip, ::ecom::lbs::ResponseBody* response) {
     Location* origin_loc = get_location(lat, lon, ip.c_str());
     if(!origin_loc) {
+        LOG(ERROR) << "lyn_debug error get_location lat:" << lat << ", lon:" << lon << ", ip:" << ip;
         return false;
     }
+
+    LOG(ERROR) << "lyn_debug result, country.code:" << origin_loc->country.code
+             << ", country.name:" << origin_loc->country.name
+             << ", province.name:" << origin_loc->province.name
+             << ", province.code:" << origin_loc->province.code
+             << ", district:" << origin_loc->district
+             << ", city:" << origin_loc->city;
 
     if(origin_loc->country.code) {
         response->mutable_country()->set_code(origin_loc->country.code);
