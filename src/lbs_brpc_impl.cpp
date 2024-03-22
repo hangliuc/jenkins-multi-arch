@@ -28,12 +28,12 @@ bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string ip, ::ecom
         return false;
     }
 
-    LOG(ERROR) << "lyn_debug result, country.code:" << origin_loc->country.code
-             << ", country.name:" << origin_loc->country.name
-             << ", province.name:" << origin_loc->province.name
-             << ", province.code:" << origin_loc->province.code
-             << ", district:" << origin_loc->district
-             << ", city:" << origin_loc->city;
+//    LOG(ERROR) << "lyn_debug result, country.code:" << origin_loc->country.code
+//             << ", country.name:" << origin_loc->country.name
+//             << ", province.name:" << origin_loc->province.name
+//             << ", province.code:" << origin_loc->province.code
+//             << ", district:" << origin_loc->district
+//             << ", city:" << origin_loc->city;
 
     if(origin_loc->country.code) {
         response->mutable_country()->set_code(origin_loc->country.code);
@@ -51,11 +51,11 @@ bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string ip, ::ecom
         response->mutable_province()->set_name(origin_loc->province.name);
     }
 
-    if(!origin_loc->district) {
+    if(origin_loc->district) {
         response->set_district(origin_loc->district);
     }
 
-    if(!origin_loc->city) {
+    if(origin_loc->city) {
         response->set_city(origin_loc->city);
     }
 
