@@ -59,6 +59,8 @@ bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string ip, ::ecom
         response->set_city(origin_loc->city);
     }
 
+    location_free(origin_loc);
+
     return true;
 
 }
