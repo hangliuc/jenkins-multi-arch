@@ -99,6 +99,6 @@ git_repository(
 git_repository(
     name = "shareit_lbs_sdk",
     remote = "git@git.ushareit.me:csp/core/baseservice/lbs/shareit-lbs-cpp.git",
-    tag = "v0.1.0_20240318"
-    # branch = "lyn_debug4"
+    tag = "v0.3.0_20240327"
+    # branch = "lyn_debug"
 )

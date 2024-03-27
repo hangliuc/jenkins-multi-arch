@@ -22,47 +22,21 @@ void LbsImpl::get_loc(::google::protobuf::RpcController* controller,
 
 
 bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string ip, ::ecom::lbs::ResponseBody* response) {
-    Location* origin_loc = get_location(lat, lon, ip.c_str());
-    if(!origin_loc) {
-        LOG(ERROR) << "lyn_debug error get_location lat:" << lat << ", lon:" << lon << ", ip:" << ip;
+    ::csp::lbs::LocationInfo origin_loc = ::csp::lbs::get_location(lat, lon, ip.c_str());
+    if(origin_loc.res == 0) {
+        // 说明没有命中
+        LOG(ERROR) << " not hit location lat:" << lat << ", lon:" << lon << ", ip:" << ip << ", msg:" << origin_loc.msg.c_str();
         return false;
     }
 
-//    LOG(ERROR) << "lyn_debug result, country.code:" << origin_loc->country.code
-//             << ", country.name:" << origin_loc->country.name
-//             << ", province.name:" << origin_loc->province.name
-//             << ", province.code:" << origin_loc->province.code
-//             << ", district:" << origin_loc->district
-//             << ", city:" << origin_loc->city;
-
-    if(origin_loc->country.code) {
-        response->mutable_country()->set_code(origin_loc->country.code);
-    }
-
-    if(origin_loc->country.name) {
-        response->mutable_country()->set_name(origin_loc->country.name);
-    }
-
-    if(origin_loc->province.code) {
-        response->mutable_province()->set_code(origin_loc->province.code);
-    }
-
-    if(origin_loc->province.name) {
-        response->mutable_province()->set_name(origin_loc->province.name);
-    }
-
-    if(origin_loc->district) {
-        response->set_district(origin_loc->district);
-    }
-
-    if(origin_loc->city) {
-        response->set_city(origin_loc->city);
-    }
-
-    location_free(origin_loc);
+    response->mutable_country()->set_code(origin_loc.country.code.c_str());
+    response->mutable_country()->set_name(origin_loc.country.name.c_str());
+    response->mutable_province()->set_code(origin_loc.province.code.c_str());
+    response->mutable_province()->set_name(origin_loc.province.name.c_str());
+    response->set_district(origin_loc.district.c_str());
+    response->set_city(origin_loc.city.c_str());
 
     return true;
-
 }
 
 }  // namespace shareAds
