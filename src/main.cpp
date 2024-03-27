@@ -54,9 +54,9 @@ int InitRuntimeInfo() {
 
 void InitLbsSDK() {
     if(shareAds::RuntimeInfo::GetInstance().is_us_east) {
-        init_config("s3://shareit.deploy.us-east-1/CBS/lbs/GeoIP2-City.mmdb.gz");
+        csp::lbs::init_config("s3://shareit.deploy.us-east-1/CBS/lbs/GeoIP2-City.mmdb.gz");
     } else if (shareAds::RuntimeInfo::GetInstance().is_europe) {
-        init_config("s3://shareit-deploy-ec1/CBS/lbs/GeoIP2-City.mmdb.gz");
+        csp::lbs::init_config("s3://shareit-deploy-ec1/CBS/lbs/GeoIP2-City.mmdb.gz");
     } else {
         throw std::runtime_error("lbs sdk has no data file configed");
     }

@@ -1,4 +1,4 @@
-FROM 848318613114.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-common/gcc-base:gcc7.4-s3cmd-bazelv16
+FROM 848318613114.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-common/gcc-base:gcc7.4-s3cmd-bazelv18
 # 配置文件路径
 RUN mkdir -p /data/code/conf/
 
