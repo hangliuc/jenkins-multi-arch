@@ -32,7 +32,7 @@ http_archive(
 # glog
 git_repository(
     name = "com_github_google_glog",
-    remote = "git@git.ushareit.me:ads/algorithm/adsservice/glog.git",
+    remote = "git@git.ushareit.me:sprs-ads/ecom-dsp/base/glog.git",
     tag = "v1.0.0",
 )
 
@@ -59,14 +59,14 @@ git_repository(
 # protobuf
 git_repository(
     name = "com_google_protobuf",
-    remote = "git@git.ushareit.me:ads/algorithm/adsservice/protobuf.git",
+    remote = "git@git.ushareit.me:sprs-ads/ecom-dsp/base/protobuf.git",
     tag = "v3.6.1.3",
 )
 
 # rapidjson
 git_repository(
     name = "rapidjson",
-    remote = "git@git.ushareit.me:ads/algorithm/adsservice/base/rapidjson.git",
+    remote = "git@git.ushareit.me:sprs-ads/ecom-dsp/base/rapidjson.git",
     #tag = "v3.6.1.3",
     branch = "master",
 )
@@ -75,7 +75,7 @@ git_repository(
 # leveldb
 git_repository(
     name = "com_github_google_leveldb",
-    remote = "git@git.ushareit.me:ads/algorithm/adsservice/base/leveldb.git",
+    remote = "git@git.ushareit.me:sprs-ads/ecom-dsp/base/leveldb.git",
     tag = "v1.0.0",
 )
 
