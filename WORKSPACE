@@ -91,8 +91,7 @@ git_repository(
 git_repository(
     name = "ads_util",
     remote = "git@git.ushareit.me:sprs-ads/ecom-dsp/ads_util.git",
-    tag = "v0.1.44.1",
-    # branch = "lyn_modify_crypto",
+    tag = "v0.1.74",
 )
 
 # shareit lbs sdk
@@ -100,5 +99,4 @@ git_repository(
     name = "shareit_lbs_sdk",
     remote = "git@git.ushareit.me:csp/core/baseservice/lbs/shareit-lbs-cpp.git",
     tag = "v0.3.0_20240327"
-    # branch = "lyn_debug"
 )
