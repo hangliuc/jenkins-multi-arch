@@ -44,7 +44,7 @@ int InitRuntimeInfo() {
 
     LOG(ERROR) << "debug:runtimeinfo|isprod:" << rt.is_prod << "|istest:" << rt.is_test
                << "|iscanary:" << rt.is_canary << "|env:" << rt.str_env
-               << "|servername:" << rt._server_name << "|is_gcs:" << rt._is_gcs
+               << "|servername:" << rt._server_name
                << "|is_us_east:" << rt.is_us_east << "|is_europe:" << rt.is_europe
                << "|which_zone:" << rt._which_zone;
 
