@@ -98,5 +98,6 @@ git_repository(
 git_repository(
     name = "shareit_lbs_sdk",
     remote = "git@git.ushareit.me:sis/baseservice/lbs/shareit-lbs-cpp.git",
-    tag = "v0.3.0_20240327"
+    # tag = "v0.3.0_20240327"
+    branch = "nhs_ram"
 )
