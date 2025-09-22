@@ -3,6 +3,7 @@
 build --cxxopt='-std=c++2a'
 build --cxxopt=-DHAVE_ZLIB=1
 build --define with_glog=true
+
 #build --cxxopt=-D_GLIBCXX_USE_CXX11_ABI=0
 build --copt=-"O2"
 build --cxxopt='-g' -c dbg
@@ -10,3 +11,5 @@ build --cxxopt='-g' -c dbg
 build --define with_s3=true --define with_ads_cloud=true --cxxopt=-DNOT_USE_KAFKA
 # 开启cpu profiler
 #build --define ads_profiler=true --cxxopt=-DBRPC_ENABLE_CPU_PROFILER
+
+build --define arm_cpu=true
