@@ -13,7 +13,7 @@
 #include "src/local_utils/concurrent_adder_group.h"
 #include "monitor/latency_group.h"
 #include "timer/timer_latency_util.h"
-#include "release/linux-amd64/include/shareit-lbs-cpp.h"
+#include "release/linux-arm/include/shareit-lbs-cpp.h"
 #include "lbs/lbs_service.pb.h"
 
 
