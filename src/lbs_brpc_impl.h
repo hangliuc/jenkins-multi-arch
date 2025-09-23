@@ -15,7 +15,7 @@
 #include "timer/timer_latency_util.h"
 #include "lbs/lbs_service.pb.h"
 
-#if defined ARM_CPU_ARC
+#if defined ARM_CPU_ARCH
     #include "release/linux-arm/include/shareit-lbs-cpp.h"
 #else
     #include "release/linux-amd64/include/shareit-lbs-cpp.h"

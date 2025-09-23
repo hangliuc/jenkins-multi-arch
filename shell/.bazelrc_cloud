@@ -12,4 +12,4 @@ build --define with_s3=true --define with_ads_cloud=true --cxxopt=-DNOT_USE_KAFK
 # 开启cpu profiler
 #build --define ads_profiler=true --cxxopt=-DBRPC_ENABLE_CPU_PROFILER
 
-build --define arm_cpu=true --cxxopt=-DARM_CPU_ARC
+build --define arm_cpu=true --cxxopt=-DARM_CPU_ARCH
