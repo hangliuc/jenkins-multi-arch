@@ -91,7 +91,8 @@ git_repository(
 git_repository(
     name = "ads_util",
     remote = "git@git.ushareit.me:sprs-ads/ecom-dsp/ads_util.git",
-    tag = "v0.1.74",
+    # tag = "v0.1.74",
+    branch = "nhs_arm_new"
 )
 
 # shareit lbs sdk
