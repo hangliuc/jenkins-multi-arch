@@ -1,9 +1,9 @@
 #!/bin/bash
 cp -fr shell/.bazelrc_cloud .bazelrc
 
-if [ "${PlatForm}" == "gcs" ];then
-    echo "build --define with_gcs=true --cxxopt=-DUSE_GCS" >> .bazelrc
-    echo "build --define with_s3=false --cxxopt=-DNOT_USE_S3" >> .bazelrc
+ARCH=$(uname -m)
+if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then
+    echo "build --define arm_cpu=true --cxxopt=-DARM_CPU_ARCH" >> .bazelrc
 fi
 
 # 业务
