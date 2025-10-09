@@ -14,4 +14,5 @@ build --define with_s3=true --define with_ads_cloud=true --cxxopt=-DNOT_USE_KAFK
 
 # build --define arm_cpu=true --cxxopt=-DARM_CPU_ARCH
 
+build --copt=-fno-gcse
 
