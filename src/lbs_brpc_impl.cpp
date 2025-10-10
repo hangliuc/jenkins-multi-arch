@@ -29,8 +29,6 @@ bool LbsImpl::_GetLocationWithSCK(double lat, double lon, std::string ip, ::ecom
         return false;
     }
 
-    LOG(ERROR) << " ------------------ ";
-
     response->mutable_country()->set_code(origin_loc.country.code.c_str());
     response->mutable_country()->set_name(origin_loc.country.name.c_str());
     response->mutable_province()->set_code(origin_loc.province.code.c_str());
