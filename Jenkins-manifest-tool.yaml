@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: manifest-tool
-  namespace: devops-tools
+  namespace: jenkins
 spec:
-  serviceAccountName: jenkins-sa
+  serviceAccountName: jenkins
   containers:
     - name: manifest-tool
       image: gaussye/manifest-tool:latest
