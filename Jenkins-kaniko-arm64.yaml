@@ -14,9 +14,16 @@ spec:
         - sleep
       args:
         - 99d
+      volumeMounts:
+        - name: m2-home
+          mountPath: /home/jenkins/agent/.m2
   restartPolicy: Never
   tolerations:
   - effect: NoExecute
     key: service
     operator: Equal
     value: arm
+  volumes:
+    - name: m2-home
+      persistentVolumeClaim:
+        claimName: jenkins-pv-claim-m2
