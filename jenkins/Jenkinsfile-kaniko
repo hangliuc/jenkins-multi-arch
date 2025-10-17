@@ -1,0 +1,79 @@
+pipeline {
+    agent none
+    stages {
+      stage('Compile for ARM64 platform') {
+        agent {
+          kubernetes {
+            yamlFile 'jenkins/Jenkins-compiler-arm64.yaml'
+          }
+        }
+        steps {
+          container('compiler') {
+            // 执行编译脚本
+            sh 'chmod +x ./shell/build.sh'
+            sh './shell/build.sh'
+            echo '编译完成，准备进行Docker构建'
+          }
+        }
+      }
+      stage('Compile for AMD64 platform') {
+        agent {
+          kubernetes {
+            yamlFile 'jenkins/Jenkins-compiler-amd64.yaml'
+          }
+        }
+        steps {
+          container('compiler') {
+            // 执行编译脚本
+            sh 'chmod +x ./shell/build.sh'
+            sh './shell/build.sh'
+            echo '编译完成，准备进行Docker构建'
+          }
+        }
+      }
+      stage('Build') {
+        parallel {
+          stage("Build for AMD64 platform") {
+              agent {
+                 kubernetes {
+                   yamlFile 'jenkins/Jenkins-kaniko-amd64.yaml'
+                 }
+              }
+              steps {
+                container('kaniko') {
+                   sh '/kaniko/executor --context `pwd` --dockerfile `pwd`/jenkins/Dockerfile --destination 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_amd64'
+                }
+              }
+            }
+          stage("Build for ARM64 platform") {
+              agent {
+                 kubernetes {
+                   yamlFile 'jenkins/Jenkins-kaniko-arm64.yaml'
+                 }
+              }
+              steps {
+                container('kaniko') {
+                   sh '/kaniko/executor --context `pwd` --dockerfile `pwd`/jenkins/Dockerfile_arm --destination 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_arm64'
+                }
+              }
+          }
+        }
+      }
+
+      stage('Manifest') {
+        agent {
+             kubernetes {
+               yamlFile 'jenkins/Jenkins-manifest-tool.yaml'
+             }
+        }
+        steps {
+          container('manifest-tool') {
+             sh 'docker-credential-ecr-login list'
+             sh 'chmod 700 jenkins/ecrtodocker.sh'
+             sh './jenkins/ecrtodocker.sh'
+             sh '/go/src/github.com/manifest-tool/manifest-tool push from-args --platforms linux/amd64,linux/arm64 --template 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_ARCHVARIANT --target 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs'
+          }
+        }
+      }
+    }
+}
