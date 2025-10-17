@@ -12,7 +12,9 @@ pipeline {
             // 执行编译脚本
             sh 'chmod +x ./shell/build.sh'
             sh './shell/build.sh'
-            echo '编译完成，准备进行Docker构建'
+            // 保存ARM64编译产物
+            stash(name: 'arm64-build-output', includes: '**/*')
+            echo 'ARM64编译完成，准备进行Docker构建'
           }
         }
       }
@@ -27,7 +29,9 @@ pipeline {
             // 执行编译脚本
             sh 'chmod +x ./shell/build.sh'
             sh './shell/build.sh'
-            echo '编译完成，准备进行Docker构建'
+            // 保存AMD64编译产物
+            stash(name: 'amd64-build-output', includes: '**/*')
+            echo 'AMD64编译完成，准备进行Docker构建'
           }
         }
       }
@@ -41,6 +45,8 @@ pipeline {
               }
               steps {
                 container('kaniko') {
+                   // 恢复AMD64编译产物
+                   unstash 'amd64-build-output'
                    sh '/kaniko/executor --context `pwd` --dockerfile `pwd`/jenkins/Dockerfile --destination 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_amd64'
                 }
               }
@@ -53,6 +59,8 @@ pipeline {
               }
               steps {
                 container('kaniko') {
+                   // 恢复ARM64编译产物
+                   unstash 'arm64-build-output'
                    sh '/kaniko/executor --context `pwd` --dockerfile `pwd`/jenkins/Dockerfile_arm --destination 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_arm64'
                 }
               }
