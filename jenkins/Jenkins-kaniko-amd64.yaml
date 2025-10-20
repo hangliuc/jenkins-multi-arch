@@ -13,17 +13,14 @@ spec:
     - name: kaniko
       image: gcr.io/kaniko-project/executor:debug
       command:
-      - sh
-      - -c
-      - |
-        mkdir -p /root/.ssh && \
-        cp -r /root/.ssh /workspace/.ssh && \
-        sleep 99d
+        - sleep
+      args:
+        - 99d
       volumeMounts:
         - name: m2-home
           mountPath: /home/jenkins/agent/.m2
         - name: ssh-key
-          mountPath: /root/.ssh
+          mountPath: /workspace/.ssh
           readOnly: true
       env:
       - name: GIT_SSH_COMMAND
