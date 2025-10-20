@@ -1,7 +1,7 @@
 FROM 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:compile_arm 
 COPY . .
 
-COPY /root/.ssh  /root/.ssh
+COPY .ssh  /root/.ssh
 
 # ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
