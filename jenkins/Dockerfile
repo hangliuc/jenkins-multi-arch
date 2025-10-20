@@ -1,8 +1,8 @@
 FROM 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:compile_x86 
 COPY . .
 
-# COPY /root/.ssh  /root/.ssh
-# RUN chmod 600 /root/.ssh/id_rsa || true
+COPY /root/.ssh  /root/.ssh
+RUN chmod 600 /root/.ssh/id_rsa || true
 
 # ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
