@@ -1,6 +1,6 @@
 FROM 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:compile_x86 as build
-RUN chmod +x ./shell/build.sh 
-RUN sh ./shell/build.sh
+RUN chmod +x shell/build.sh 
+RUN sh shell/build.sh
 
 
 FROM 848318613114.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-common/gcc-base:gcc7.4-s3cmd-bazelv18
