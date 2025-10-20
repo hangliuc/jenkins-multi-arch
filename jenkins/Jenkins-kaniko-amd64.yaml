@@ -13,9 +13,10 @@ spec:
     - name: kaniko
       image: gcr.io/kaniko-project/executor:debug
       command:
-        - sleep
-      args:
-        - 99d
+      - sh
+      - -c
+      - |
+        mkdir -p /root/.ssh && chmod 700 /root/.ssh && sleep 99d
       volumeMounts:
         - name: m2-home
           mountPath: /home/jenkins/agent/.m2
