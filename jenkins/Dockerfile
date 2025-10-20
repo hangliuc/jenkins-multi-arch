@@ -8,7 +8,8 @@ RUN mkdir -p /root/.ssh && \
 
 ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
-RUN chmod +x shell/build.sh && sh shell/build.sh
+RUN chmod +x shell/clean.sh && sh shell/clean.sh && \
+chmod +x shell/build.sh && sh shell/build.sh
 
 RUN mkdir -p /data/code/conf/
 
