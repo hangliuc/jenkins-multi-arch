@@ -8,13 +8,12 @@ RUN mkdir -p /root/.ssh && \
 
 ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
-RUN chmod +x shell/build.sh && sh shell/build.sh && \
-    cp -r bazel-bin/src/lbs_brpc /workspace/lbs_brpc
+RUN chmod +x shell/build.sh && sh shell/build.sh 
 
 WORKDIR /data/code/
 RUN mkdir -p /data/code/conf/
 
-COPY lbs_brpc /data/code/ 
+COPY  bazel-bin/src/lbs_brpc /data/code/ 
 COPY  run.sh   /data/code/
 COPY  conf/prod.conf  /data/code/conf/
 COPY  conf/test.conf  /data/code/conf/
