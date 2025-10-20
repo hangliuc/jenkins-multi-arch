@@ -1,4 +1,5 @@
 FROM 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:compile_x86 as build
+RUN pwd && ls -al 
 RUN chmod +x shell/build.sh 
 RUN sh shell/build.sh
 
