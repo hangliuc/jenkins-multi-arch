@@ -19,8 +19,18 @@ spec:
       volumeMounts:
         - name: m2-home
           mountPath: /home/jenkins/agent/.m2
+        - name: ssh-key
+          mountPath: /root/.ssh
+          readOnly: true
+      env:
+      - name: GIT_SSH_COMMAND
+        value: "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
   restartPolicy: Never
   volumes:
     - name: m2-home
       persistentVolumeClaim:
         claimName: jenkins-pv-claim-m2
+    - name: ssh-key
+      secret:
+        secretName: gitlab-ssh-key
+        defaultMode: 0600
