@@ -10,10 +10,9 @@ ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyCheckin
 
 RUN chmod +x shell/build.sh && sh shell/build.sh
 
-WORKDIR /data/code/
 RUN mkdir -p /data/code/conf/
 
-COPY  bazel-bin/src/lbs_brpc  /data/code/  
+COPY  /data/code/bazel-bin/src/lbs_brpc  /data/code/  
 COPY  run.sh   /data/code/
 COPY  conf/prod.conf  /data/code/conf/
 COPY  conf/test.conf  /data/code/conf/
