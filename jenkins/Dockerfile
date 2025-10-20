@@ -1,13 +1,17 @@
 FROM 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:compile_x86 
 COPY . .
+
+COPY /root/.ssh  /root/.ssh
+RUN chmod 600 /root/.ssh/id_rsa || true
+
 ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-RUN chmod 600 /root/.ssh/id_rsa || true && \
-    chmod +x shell/clean.sh && sh shell/clean.sh && \
+
+RUN chmod +x shell/clean.sh && sh shell/clean.sh && \
     chmod +x shell/build.sh && sh shell/build.sh
 
 RUN mkdir -p /data/code/conf/
 
-COPY  lbs_brpc  /data/code/
+COPY  lbs_brpc  /data/code/  
 COPY  run.sh   /data/code/
 COPY  conf/prod.conf  /data/code/conf/
 COPY  conf/test.conf  /data/code/conf/
