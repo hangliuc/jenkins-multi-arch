@@ -18,7 +18,7 @@ spec:
         - 99d
       volumeMounts:
         - name: m2-home
-          mountPath: /home/jenkins/agent
+          mountPath: /home/jenkins/agent/.m2
         - name: ssh-key
           mountPath: /workspace/.ssh
           readOnly: true
