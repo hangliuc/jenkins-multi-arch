@@ -45,7 +45,7 @@ pipeline {
               }
               steps {
                 container('kaniko') {
-                   sh '/kaniko/executor --context `pwd` --dockerfile `pwd`/jenkins/Dockerfile --destination 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_amd64'
+                   sh '/kaniko/executor --context `pwd` --dockerfile `pwd`/jenkins/Dockerfile --destination 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_amd64 --build-arg SSH_PRIVATE_KEY="$(cat /workspace/.ssh/id_rsa)"' 
                 }
               }
             }
@@ -57,7 +57,7 @@ pipeline {
               }
               steps {
                 container('kaniko') {
-                   sh '/kaniko/executor --context `pwd` --dockerfile `pwd`/jenkins/Dockerfile_arm --destination 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_arm64'
+                   sh '/kaniko/executor --context `pwd` --dockerfile `pwd`/jenkins/Dockerfile_arm --destination 526418118390.dkr.ecr.ap-southeast-1.amazonaws.com/shareit-csp/jenkins:lbs_arm64 --build-arg SSH_PRIVATE_KEY="$(cat /workspace/.ssh/id_rsa)"'
                 }
               }
           }
